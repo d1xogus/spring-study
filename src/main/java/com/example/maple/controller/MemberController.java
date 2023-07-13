@@ -1,4 +1,4 @@
-package com.example.maple.Controller;
+package com.example.maple.controller;
 
 import com.example.maple.DTO.MemberDTO;
 import com.example.maple.Entity.Member;

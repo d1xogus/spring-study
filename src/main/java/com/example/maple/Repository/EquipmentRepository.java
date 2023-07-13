@@ -3,9 +3,15 @@ package com.example.maple.Repository;
 import com.example.maple.Entity.Equipment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
-    List<Equipment> findByE_type(String e_type);
-    List<Equipment> findByE_id(Long e_id);
+    @Override
+    ArrayList<Equipment> findAll();
+    Optional<Equipment> findByEid(Long eid);
+
+    Optional<Equipment> findByEtype(String etype);
 }

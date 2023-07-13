@@ -1,9 +1,8 @@
-package com.example.maple.Controller;
+package com.example.maple.controller;
 
 import com.example.maple.DTO.EquipmentDTO;
 import com.example.maple.Service.EquipmentService;
 import com.example.maple.Entity.Equipment;
-import com.example.maple.Repository.EquipmentRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Slf4j
@@ -24,14 +24,14 @@ public class EquipmentController {
         return equipmentService.index();
     }
 
-    @GetMapping("/equipments/{e_type}")
-    public List<Equipment> indexByType(@PathVariable String e_type){
-        return equipmentService.indexByType(e_type);
+    @GetMapping("/equipments/{etype}")
+    public Optional<Equipment> indexByType(@PathVariable String etype){
+        return equipmentService.indexByType(etype);
     }
 
-    @GetMapping("/equipments/{e_id}")
-    public List<Equipment> indexById(@PathVariable Long e_id){
-        return equipmentService.indexById(e_id);
+    @GetMapping("/equipments/{eid}")
+    public Optional<Equipment> indexById(@PathVariable Long eid){
+        return equipmentService.indexById(eid);
     }
 
     @PostMapping("/equipments/new")
@@ -42,17 +42,17 @@ public class EquipmentController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PatchMapping("/equipments/{e_id}")
-    public ResponseEntity<Equipment> update(@PathVariable Long e_id, @RequestBody EquipmentDTO equipmentDTO){
-        Equipment updated = equipmentService.update(e_id, equipmentDTO);
+    @PatchMapping("/equipments/{eid}")
+    public ResponseEntity<Equipment> update(@PathVariable Long eid, @RequestBody EquipmentDTO equipmentDTO){
+        Equipment updated = equipmentService.update(eid, equipmentDTO);
         return (updated != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(updated) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @DeleteMapping("/equipments/e_id}")
-    public ResponseEntity<Equipment> delete(@PathVariable Long e_id){
-        Equipment deleted = equipmentService.delete(e_id);
+    @DeleteMapping("/equipments/{eid}")
+    public ResponseEntity<Equipment> delete(@PathVariable Long eid){
+        Equipment deleted = equipmentService.delete(eid);
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(deleted) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -15,12 +16,12 @@ public class EquipmentService {
         return equipmentRepository.findAll();
     }
 
-    public List<Equipment> indexByType(String e_Type) {
-        return equipmentRepository.findByE_type(e_Type);
+    public Optional<Equipment> indexByType(String etype) {
+        return equipmentRepository.findByEtype(etype);
     }
 
-    public List<Equipment> indexById(Long e_id) {
-        return equipmentRepository.findByE_id(e_id);
+    public Optional<Equipment> indexById(Long eid) {
+        return equipmentRepository.findByEid(eid);
     }
 
     public Equipment create(EquipmentDTO equipmentDTO) {
@@ -28,16 +29,16 @@ public class EquipmentService {
         return equipmentRepository.save(equipment);
     }
 
-    public Equipment update(Long e_id, EquipmentDTO equipmentDTO){
+    public Equipment update(Long eid, EquipmentDTO equipmentDTO){
         Equipment equipment = equipmentDTO.toupdateEntity(equipmentDTO);
-        Equipment target = equipmentRepository.findById(e_id).orElse(null);
+        Equipment target = equipmentRepository.findById(eid).orElse(null);
         target.patch(equipment);
         Equipment updated = equipmentRepository.save(target);
         return updated;
     }
 
-    public Equipment delete(Long e_id) {
-        Equipment target = equipmentRepository.findById(e_id).orElse(null);
+    public Equipment delete(Long eid) {
+        Equipment target = equipmentRepository.findById(eid).orElse(null);
         equipmentRepository.delete(target);
         return target;
     }

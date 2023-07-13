@@ -16,7 +16,7 @@ public class Equipment extends Time{
     // 물품 식별자
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동 생성
-    private Long e_id;
+    private Long eid;
 
     // 판매/구매 사용자
     @ManyToOne // JPA(Java Persistence API)에서 엔티티 간의 관계를 로딩하는 방식을 지정하는 데 사용되는 옵션 LAZY가 기본
@@ -24,33 +24,34 @@ public class Equipment extends Time{
     private Member member;
 
     // 물품 이름
-    private String e_name;
+    private String ename;
 
     //판매 구매 여부
-    private String e_method;
+    private String emethod;
 
     // 물품 종류
-    private String e_type;
+    private String etype;
     // 물품 가격
-    private Long e_price;
+    private Long eprice;
     // 물품 정보
-    private String e_info;
+    private String einfo;
 
     public void patch(Equipment equipment) {
-        if(equipment.e_name != null){
-            this.e_name = equipment.e_name;
+        if(equipment.ename != null){
+            this.ename = equipment.ename;
         }
-        if(equipment.e_price != null){
-            this.e_name = equipment.e_name;
+        if(equipment.eprice != null){
+            this.eprice = equipment.eprice
+            ;
         }
-        if (equipment.e_info != null){
-            this.e_info = equipment.e_info;
+        if (equipment.einfo != null){
+            this.einfo = equipment.einfo;
         }
-        if (equipment.e_method != null){
-            this.e_method = equipment.e_method;
+        if (equipment.emethod != null){
+            this.emethod = equipment.emethod;
         }
-        if (equipment.e_type != null){
-            this.e_type = equipment.e_type;
+        if (equipment.etype != null){
+            this.etype = equipment.etype;
         }
     }
 }
