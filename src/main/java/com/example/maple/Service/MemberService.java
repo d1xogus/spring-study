@@ -3,6 +3,7 @@ package com.example.maple.Service;
 import com.example.maple.DTO.MemberDTO;
 import com.example.maple.Entity.Member;
 import com.example.maple.Repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,27 +11,29 @@ import java.util.List;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class MemberService {
-    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
     public List<Member> index() {
         return memberRepository.findAll();
     }
 
     public Member create(MemberDTO memberDTO) {
         Member member = memberDTO.toMemberEntity(memberDTO);
-        return memberRepository.save(member);
+        memberRepository.save(member);
+        return member;
     }
 
-    public Member update(String m_id, MemberDTO memberDTO) {
+    public Member update(String mid, MemberDTO memberDTO) {
         Member member = memberDTO.toupdateEntity(memberDTO);
-        Member target = memberRepository.findById(m_id).orElse(null);
+        Member target = memberRepository.findById(mid).orElse(null);
         target.patch(member);
-        Member updated = memberRepository.save(target);
-        return updated;
+        memberRepository.save(target);
+        return target;
     }
 
-    public Member delete(String m_id) {
-        Member target = memberRepository.findById(m_id).orElse(null);
+    public Member delete(String mid) {
+        Member target = memberRepository.findById(mid).orElse(null);
         memberRepository.delete(target);
         return target;
     }

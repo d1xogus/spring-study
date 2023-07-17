@@ -17,17 +17,16 @@ public class Member extends Time{
 
     // 사용자 아이디
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long m_id;
+    private Long mid;
 
     // 사용자 이메일
-    private String m_Email;
+    private String mEmail;
 
     // 사용자 비밀번호
-    private String m_Passwd;
+    private String mPasswd;
 
     // 사용자 이름
-    private String m_Name;
+    private String mName;
 
     // 판매/구매 목록
     @Builder.Default //객체를 생성할 때 equipmentList 필드에 기본값인 빈 리스트(ArrayList)를 할당하기 위해서입니다.
@@ -35,20 +34,20 @@ public class Member extends Time{
     private List<Equipment> equipmentList = new ArrayList<>();
 
     // 사용자 정보
-    private String m_info;
+    private String minfo;
 
     public void patch(Member member){
-        if(member.m_Email != null){
-            this.m_Email = member.m_Email;
+        if(member.mEmail != null){
+            this.mEmail = member.mEmail;
         }
-        if(member.m_info != null){
-            this.m_info = member.m_info;
+        if(member.minfo != null){
+            this.minfo = member.minfo;
         }
-        if(member.m_Name != null){
-            this.m_Name = member.m_Name;
+        if(member.mName != null){
+            this.mName = member.mName;
         }
-        if(member.m_Passwd != null){
-            this.m_Passwd = member.m_Passwd;
+        if(member.mPasswd != null){
+            this.mPasswd = member.mPasswd;
         }
     }
 }

@@ -14,35 +14,35 @@ import java.util.List;
 @Setter
 @ToString
 public class MemberDTO {
-    private Long m_id;
+    private Long mid;
 
     // 사용자 이메일
-    private String m_Email;
+    private String mEmail;
 
     // 사용자 비밀번호
-    private String m_Passwd;
+    private String mPasswd;
 
     // 사용자 이름
-    private String m_Name;
+    private String mName;
 
     //private List<Equipment> equipmentList;
-    private String m_info;
+    private String minfo;
     public static Member toMemberEntity(MemberDTO memberDTO) {
         Member member = new Member();
-        member.setM_id(memberDTO.getM_id());
-        member.setM_Passwd(memberDTO.getM_Passwd());
-        member.setM_Email(memberDTO.getM_Email());
-        member.setM_Name(memberDTO.getM_Name());
-        member.setM_info(memberDTO.getM_info());
+        member.setMid(memberDTO.getMid());
+        member.setMPasswd(memberDTO.getMPasswd());
+        member.setMEmail(memberDTO.getMEmail());
+        member.setMName(memberDTO.getMName());
+        member.setMinfo(memberDTO.getMinfo());
         return member;
     }
 
     public static Member toupdateEntity(MemberDTO memberDTO) {
         Member member = new Member();
-        member.setM_Passwd(memberDTO.getM_Passwd());
-        member.setM_Email(memberDTO.getM_Email());
-        member.setM_Name(memberDTO.getM_Name());
-        member.setM_info(memberDTO.getM_info());
+        member.setMPasswd(memberDTO.getMPasswd());
+        member.setMEmail(memberDTO.getMEmail());
+        member.setMName(memberDTO.getMName());
+        member.setMinfo(memberDTO.getMinfo());
         return member;
     }
 }

@@ -20,8 +20,8 @@ public class MemberController {
     private MemberService memberService;
 
     //사용자 정보 조회
-    @GetMapping("/members/{m_id}")
-    public List<Member> index(@PathVariable String m_id){
+    @GetMapping("/members/{mid}")
+    public List<Member> index(@PathVariable String mid){
         return memberService.index();
     }
 
@@ -33,17 +33,17 @@ public class MemberController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PatchMapping("/members/{m_id}")
-    public ResponseEntity<Member> update(@PathVariable String m_id, @RequestBody MemberDTO memberDTO){
-        Member updated = memberService.update(m_id, memberDTO);
+    @PatchMapping("/members/{mid}")
+    public ResponseEntity<Member> update(@PathVariable String mid, @RequestBody MemberDTO memberDTO){
+        Member updated = memberService.update(mid, memberDTO);
         return (updated != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(updated) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @DeleteMapping("/members/{m_id}")
-    public ResponseEntity<Member> delete(@PathVariable String m_id){
-        Member deleted = memberService.delete(m_id);
+    @DeleteMapping("/members/{mid}")
+    public ResponseEntity<Member> delete(@PathVariable String mid){
+        Member deleted = memberService.delete(mid);
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(deleted) :
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
