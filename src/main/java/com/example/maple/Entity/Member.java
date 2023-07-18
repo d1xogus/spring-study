@@ -1,6 +1,9 @@
 package com.example.maple.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.springframework.data.util.Lazy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,10 +16,11 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member extends Time{
+public class Member{
 
     // 사용자 아이디
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동 생성
     private Long mid;
 
     // 사용자 이메일
@@ -30,7 +34,7 @@ public class Member extends Time{
 
     // 판매/구매 목록
     @Builder.Default //객체를 생성할 때 equipmentList 필드에 기본값인 빈 리스트(ArrayList)를 할당하기 위해서입니다.
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL) // 어노테이선 관계 설정, 주인엔티티의 필드 설정
+    @OneToMany(fetch = FetchType.EAGER) //(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Equipment> equipmentList = new ArrayList<>();
 
     // 사용자 정보
@@ -48,6 +52,9 @@ public class Member extends Time{
         }
         if(member.mPasswd != null){
             this.mPasswd = member.mPasswd;
+        }
+        if(member.equipmentList != null){
+            this.equipmentList = member.equipmentList;
         }
     }
 }

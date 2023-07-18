@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Slf4j
@@ -21,8 +22,8 @@ public class MemberController {
 
     //사용자 정보 조회
     @GetMapping("/members/{mid}")
-    public List<Member> index(@PathVariable String mid){
-        return memberService.index();
+    public Optional<Member> index(@PathVariable Long mid){
+        return memberService.index(mid);
     }
 
     @PostMapping("/members/new")
@@ -34,7 +35,7 @@ public class MemberController {
     }
 
     @PatchMapping("/members/{mid}")
-    public ResponseEntity<Member> update(@PathVariable String mid, @RequestBody MemberDTO memberDTO){
+    public ResponseEntity<Member> update(@PathVariable Long mid, @RequestBody MemberDTO memberDTO){
         Member updated = memberService.update(mid, memberDTO);
         return (updated != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(updated) :
@@ -42,7 +43,7 @@ public class MemberController {
     }
 
     @DeleteMapping("/members/{mid}")
-    public ResponseEntity<Member> delete(@PathVariable String mid){
+    public ResponseEntity<Member> delete(@PathVariable Long mid){
         Member deleted = memberService.delete(mid);
         return (deleted != null) ?
                 ResponseEntity.status(HttpStatus.OK).body(deleted) :

@@ -19,9 +19,9 @@ public class Equipment extends Time{
     private Long eid;
 
     // 판매/구매 사용자
-    @ManyToOne // JPA(Java Persistence API)에서 엔티티 간의 관계를 로딩하는 방식을 지정하는 데 사용되는 옵션 LAZY가 기본
-    @JoinColumn(name = "m_id")
-    private Member member;
+  //  @ManyToOne // JPA(Java Persistence API)에서 엔티티 간의 관계를 로딩하는 방식을 지정하는 데 사용되는 옵션 LAZY가 기본
+  //  @JoinColumn(name = "mid") //일대다 단방향을 @JoinColumn필수
+//    private Member member;
 
     // 물품 이름
     private String ename;

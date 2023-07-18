@@ -8,14 +8,15 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
-    public List<Member> index() {
-        return memberRepository.findAll();
+    public Optional<Member> index(Long mid) {
+        return memberRepository.findById(mid);
     }
 
     public Member create(MemberDTO memberDTO) {
@@ -24,7 +25,7 @@ public class MemberService {
         return member;
     }
 
-    public Member update(String mid, MemberDTO memberDTO) {
+    public Member update(Long mid, MemberDTO memberDTO) {
         Member member = memberDTO.toupdateEntity(memberDTO);
         Member target = memberRepository.findById(mid).orElse(null);
         target.patch(member);
@@ -32,7 +33,7 @@ public class MemberService {
         return target;
     }
 
-    public Member delete(String mid) {
+    public Member delete(Long mid) {
         Member target = memberRepository.findById(mid).orElse(null);
         memberRepository.delete(target);
         return target;

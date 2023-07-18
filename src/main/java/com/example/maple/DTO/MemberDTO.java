@@ -25,15 +25,15 @@ public class MemberDTO {
     // 사용자 이름
     private String mName;
 
-    //private List<Equipment> equipmentList;
+//    private List<Equipment> equipmentList;
     private String minfo;
     public static Member toMemberEntity(MemberDTO memberDTO) {
         Member member = new Member();
-        member.setMid(memberDTO.getMid());
         member.setMPasswd(memberDTO.getMPasswd());
         member.setMEmail(memberDTO.getMEmail());
         member.setMName(memberDTO.getMName());
         member.setMinfo(memberDTO.getMinfo());
+       // member.setEquipmentList(memberDTO.getEquipmentList());
         return member;
     }
 
@@ -43,6 +43,7 @@ public class MemberDTO {
         member.setMEmail(memberDTO.getMEmail());
         member.setMName(memberDTO.getMName());
         member.setMinfo(memberDTO.getMinfo());
+   //     member.setEquipmentList(memberDTO.getEquipmentList());
         return member;
     }
 }
