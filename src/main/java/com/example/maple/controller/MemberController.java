@@ -15,18 +15,19 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping("/members")
 public class MemberController {
 
     @Autowired
     private MemberService memberService;
 
     //사용자 정보 조회
-    @GetMapping("/members/{mid}")
+    @GetMapping("/{mid}")
     public Optional<Member> index(@PathVariable Long mid){
         return memberService.index(mid);
     }
 
-    @PostMapping("/members/new")
+    @PostMapping("/new")
     public ResponseEntity<Member> create(@RequestBody MemberDTO memberDTO){
         Member created = memberService.create(memberDTO);
         return (created != null) ?
@@ -34,7 +35,7 @@ public class MemberController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PatchMapping("/members/{mid}")
+    @PatchMapping("/{mid}")
     public ResponseEntity<Member> update(@PathVariable Long mid, @RequestBody MemberDTO memberDTO){
         Member updated = memberService.update(mid, memberDTO);
         return (updated != null) ?
@@ -42,7 +43,7 @@ public class MemberController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @DeleteMapping("/members/{mid}")
+    @DeleteMapping("/{mid}")
     public ResponseEntity<Member> delete(@PathVariable Long mid){
         Member deleted = memberService.delete(mid);
         return (deleted != null) ?

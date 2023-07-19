@@ -18,7 +18,7 @@ public class EquipmentDTO {
     private Long eid;
     //private Member member;
     // 물품 이름
-    private Long mid;
+    private Long mem;
     private String ename;
     //판매 구매 여부
     private String emethod;
@@ -31,7 +31,7 @@ public class EquipmentDTO {
 
     public static Equipment toEquipmentEntity(EquipmentDTO equipmentDTO) {
         Equipment equipment = new Equipment();
-        equipment.setEid(equipmentDTO.getEid());
+        equipment.setMem(equipmentDTO.getMem());
      //   equipment.setMember(equipmentDTO.getMember());
         equipment.setEname(equipmentDTO.getEname());
         equipment.setEprice(equipmentDTO.getEprice());

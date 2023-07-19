@@ -2,6 +2,7 @@ package com.example.maple.Service;
 import com.example.maple.DTO.EquipmentDTO;
 import com.example.maple.Entity.Equipment;
 import com.example.maple.Repository.EquipmentRepository;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +11,9 @@ import java.util.Optional;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class EquipmentService {
-    private EquipmentRepository equipmentRepository;
+    private final EquipmentRepository equipmentRepository;
     public List<Equipment> index() {
         return equipmentRepository.findAll();
     }

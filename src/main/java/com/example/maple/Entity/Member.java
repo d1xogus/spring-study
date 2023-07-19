@@ -35,6 +35,7 @@ public class Member{
     // 판매/구매 목록
     @Builder.Default //객체를 생성할 때 equipmentList 필드에 기본값인 빈 리스트(ArrayList)를 할당하기 위해서입니다.
     @OneToMany(fetch = FetchType.EAGER) //(mappedBy = "member", cascade = CascadeType.ALL)
+    @JoinColumn(name = "mem")
     private List<Equipment> equipmentList = new ArrayList<>();
 
     // 사용자 정보

@@ -15,26 +15,27 @@ import java.util.Optional;
 
 @Slf4j
 @RestController
+@RequestMapping ("/equipments")
 public class EquipmentController {
     @Autowired
     private EquipmentService equipmentService;
 
-    @GetMapping("/equipments")
+    @GetMapping("")
     public List<Equipment> index(){
         return equipmentService.index();
     }
 
-    @GetMapping("/equipments/{etype}")
+    @GetMapping("/{etype}")
     public Optional<Equipment> indexByType(@PathVariable String etype){
         return equipmentService.indexByType(etype);
     }
 
-    @GetMapping("/equipments/{eid}")
+    @GetMapping("/{eid}")
     public Optional<Equipment> indexById(@PathVariable Long eid){
         return equipmentService.indexById(eid);
     }
 
-    @PostMapping("/equipments/new")
+    @PostMapping("/new")
     public ResponseEntity<Equipment> create(@RequestBody EquipmentDTO equipmentDTO){
         Equipment created = equipmentService.create(equipmentDTO);
         return (created != null) ?
@@ -42,7 +43,7 @@ public class EquipmentController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @PatchMapping("/equipments/{eid}")
+    @PatchMapping("/{eid}")
     public ResponseEntity<Equipment> update(@PathVariable Long eid, @RequestBody EquipmentDTO equipmentDTO){
         Equipment updated = equipmentService.update(eid, equipmentDTO);
         return (updated != null) ?
@@ -50,7 +51,7 @@ public class EquipmentController {
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 
-    @DeleteMapping("/equipments/{eid}")
+    @DeleteMapping("/{eid}")
     public ResponseEntity<Equipment> delete(@PathVariable Long eid){
         Equipment deleted = equipmentService.delete(eid);
         return (deleted != null) ?
