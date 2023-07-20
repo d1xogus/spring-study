@@ -23,7 +23,7 @@ public class EquipmentService {
     }
 
     public Optional<Equipment> indexById(Long eid) {
-        return equipmentRepository.findByEid(eid);
+        return equipmentRepository.findById(eid);
     }
 
     public Equipment create(EquipmentDTO equipmentDTO) {

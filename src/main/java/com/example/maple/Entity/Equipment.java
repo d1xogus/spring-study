@@ -18,10 +18,6 @@ public class Equipment extends Time{
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 기본키 자동 생성
     private Long eid;
 
-    // 판매/구매 사용자
-  //  @ManyToOne // JPA(Java Persistence API)에서 엔티티 간의 관계를 로딩하는 방식을 지정하는 데 사용되는 옵션 LAZY가 기본
-  //  @JoinColumn(name = "mid") //일대다 단방향을 @JoinColumn필수
-//    private Member member;
     private Long mem; // 토큰으로 해야함
     // 물품 이름
     private String ename;
@@ -44,8 +40,7 @@ public class Equipment extends Time{
             this.mem = equipment.mem;
         }
         if(equipment.eprice != null){
-            this.eprice = equipment.eprice
-            ;
+            this.eprice = equipment.eprice;
         }
         if (equipment.einfo != null){
             this.einfo = equipment.einfo;
