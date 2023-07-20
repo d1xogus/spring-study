@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface EquipmentRepository extends JpaRepository<Equipment, Long> {
     @Override
     ArrayList<Equipment> findAll();
-    Optional<Equipment> findByEtype(String etype);
+    List<Equipment> findByEtype(String etype);
 }

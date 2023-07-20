@@ -18,7 +18,7 @@ public class EquipmentService {
         return equipmentRepository.findAll();
     }
 
-    public Optional<Equipment> indexByType(String etype) {
+    public List<Equipment> indexByType(String etype) {
         return equipmentRepository.findByEtype(etype);
     }
 
