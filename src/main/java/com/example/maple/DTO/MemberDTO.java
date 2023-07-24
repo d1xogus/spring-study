@@ -14,7 +14,6 @@ import java.util.List;
 @Setter
 @ToString
 public class MemberDTO {
-    private Long mid;
 
     // 사용자 이메일
     private String mEmail;
@@ -25,16 +24,22 @@ public class MemberDTO {
     // 사용자 이름
     private String mName;
 
-//    private List<Equipment> equipmentList;
     private String minfo;
     public static Member toMemberEntity(MemberDTO memberDTO) {
-        Member member = new Member();
-        member.setMPasswd(memberDTO.getMPasswd());
-        member.setMEmail(memberDTO.getMEmail());
-        member.setMName(memberDTO.getMName());
-        member.setMinfo(memberDTO.getMinfo());
-       // member.setEquipmentList(memberDTO.getEquipmentList());
-        return member;
+//        Member member = new Member();
+//        member.setMPasswd(memberDTO.getMPasswd());
+//        member.setMEmail(memberDTO.getMEmail());
+//        member.setMName(memberDTO.getMName());
+//        member.setMinfo(memberDTO.getMinfo());
+//        member.setEquipmentList(memberDTO.getEquipmentList());
+
+        Member newMember = Member.builder()
+                .mName(memberDTO.getMName())
+                .mEmail(memberDTO.getMEmail())
+                .minfo(memberDTO.getMinfo())
+                .mPasswd(memberDTO.getMPasswd())
+                .build();
+        return newMember;
     }
 
     public static Member toupdateEntity(MemberDTO memberDTO) {
@@ -43,7 +48,14 @@ public class MemberDTO {
         member.setMEmail(memberDTO.getMEmail());
         member.setMName(memberDTO.getMName());
         member.setMinfo(memberDTO.getMinfo());
-   //     member.setEquipmentList(memberDTO.getEquipmentList());
         return member;
+
+//        Member member = Member.builder()
+//                .mName(memberDTO.getMName())
+//                .mEmail(memberDTO.getMEmail())
+//                .minfo(memberDTO.getMinfo())
+//                .mPasswd(memberDTO.getMPasswd())
+//                .build();
+//        return member;
     }
 }

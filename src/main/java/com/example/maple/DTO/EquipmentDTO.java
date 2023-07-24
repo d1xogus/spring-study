@@ -1,9 +1,6 @@
 package com.example.maple.DTO;
 import com.example.maple.Entity.Equipment;
-import com.example.maple.Entity.Member;
-import com.example.maple.DTO.MemberDTO;
 
-import com.example.maple.Repository.MemberRepository;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -15,8 +12,6 @@ import java.util.List;
 @ToString
 public class EquipmentDTO {
 
-    private Long eid;
-    //private Member member;
     // 물품 이름
     private Long mem;
     private String ename;
@@ -30,25 +25,36 @@ public class EquipmentDTO {
     private String einfo;
 
     public static Equipment toEquipmentEntity(EquipmentDTO equipmentDTO) {
-        Equipment equipment = new Equipment();
-        equipment.setMem(equipmentDTO.getMem());
-     //   equipment.setMember(equipmentDTO.getMember());
-        equipment.setEname(equipmentDTO.getEname());
-        equipment.setEprice(equipmentDTO.getEprice());
-        equipment.setEmethod(equipmentDTO.getEmethod());
-        equipment.setEinfo(equipmentDTO.getEinfo());
-        equipment.setEtype(equipmentDTO.getEtype());
-        return equipment;
+//        Equipment equipment = new Equipment();
+//        equipment.setMem(equipmentDTO.getMem());
+//        equipment.setEname(equipmentDTO.getEname());
+//        equipment.setEprice(equipmentDTO.getEprice());
+//        equipment.setEmethod(equipmentDTO.getEmethod());
+//        equipment.setEinfo(equipmentDTO.getEinfo());
+//        equipment.setEtype(equipmentDTO.getEtype());
+//        return equipment;
+        Equipment newEquipment = Equipment.builder()
+                .einfo(equipmentDTO.getEinfo())
+                .emethod(equipmentDTO.getEmethod())
+                .ename(equipmentDTO.getEname())
+                .eprice(equipmentDTO.getEprice())
+                .etype(equipmentDTO.getEtype())
+                .mem(equipmentDTO.getMem())
+                .build();
+        return newEquipment;
     }
 
     public static Equipment toupdateEntity(EquipmentDTO equipmentDTO) {
-        Equipment equipment = new Equipment();
-     //   equipment.setMember(equipmentDTO.getMember());
-        equipment.setEname(equipmentDTO.getEname());
-        equipment.setEprice(equipmentDTO.getEprice());
-        equipment.setEmethod(equipmentDTO.getEmethod());
-        equipment.setEinfo(equipmentDTO.getEinfo());
-        equipment.setEtype(equipmentDTO.getEtype());
+//        Equipment equipment = new Equipment();
+//        equipment.setEprice(equipmentDTO.getEprice());
+//        equipment.setEmethod(equipmentDTO.getEmethod());
+//        equipment.setEinfo(equipmentDTO.getEinfo());
+//        return equipment;
+        Equipment equipment = Equipment.builder()
+                .einfo(equipmentDTO.getEinfo())
+                .eprice(equipmentDTO.getEprice())
+                .emethod(equipmentDTO.getEmethod())
+                .build();
         return equipment;
     }
 }

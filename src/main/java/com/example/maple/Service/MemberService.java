@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Slf4j
@@ -27,7 +28,7 @@ public class MemberService {
 
     public Member update(Long mid, MemberDTO memberDTO) {
         Member member = memberDTO.toupdateEntity(memberDTO);
-        Member target = memberRepository.findById(mid).orElse(null);
+        Member target = memberRepository.findById(mid).orElseThrow(() -> new NoSuchElementException("그런 사용자 없다"));
         target.patch(member);
         memberRepository.save(target);
         return target;
