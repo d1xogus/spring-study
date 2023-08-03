@@ -25,23 +25,23 @@ public class EquipmentDTO {
     private String einfo;
 
     public static Equipment toEquipmentEntity(EquipmentDTO equipmentDTO) {
-//        Equipment equipment = new Equipment();
-//        equipment.setMem(equipmentDTO.getMem());
-//        equipment.setEname(equipmentDTO.getEname());
-//        equipment.setEprice(equipmentDTO.getEprice());
-//        equipment.setEmethod(equipmentDTO.getEmethod());
-//        equipment.setEinfo(equipmentDTO.getEinfo());
-//        equipment.setEtype(equipmentDTO.getEtype());
-//        return equipment;
-        Equipment newEquipment = Equipment.builder()
-                .einfo(equipmentDTO.getEinfo())
-                .emethod(equipmentDTO.getEmethod())
-                .ename(equipmentDTO.getEname())
-                .eprice(equipmentDTO.getEprice())
-                .etype(equipmentDTO.getEtype())
-                .mem(equipmentDTO.getMem())
-                .build();
-        return newEquipment;
+        Equipment equipment = new Equipment();
+        equipment.setMem(equipmentDTO.getMem());
+        equipment.setEname(equipmentDTO.getEname());
+        equipment.setEprice(equipmentDTO.getEprice());
+        equipment.setEmethod(equipmentDTO.getEmethod());
+        equipment.setEinfo(equipmentDTO.getEinfo());
+        equipment.setEtype(equipmentDTO.getEtype());
+        return equipment;
+//        Equipment newEquipment = Equipment.builder()
+//                .einfo(equipmentDTO.getEinfo())
+//                .emethod(equipmentDTO.getEmethod())
+//                .ename(equipmentDTO.getEname())
+//                .eprice(equipmentDTO.getEprice())
+//                .etype(equipmentDTO.getEtype())
+//                .mem(equipmentDTO.getMem())
+//                .build();
+//        return newEquipment;
     }
 
     public static Equipment toupdateEntity(EquipmentDTO equipmentDTO) {

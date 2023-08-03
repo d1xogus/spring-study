@@ -106,4 +106,5 @@ public class EquipmentController {
                 ResponseEntity.status(200).body(deleted) :
                 ResponseEntity.status(404).build();
     }
+
 }

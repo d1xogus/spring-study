@@ -9,12 +9,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -83,5 +80,13 @@ public class MemberController {
                 ResponseEntity.status(200).body(deleted) :
                 ResponseEntity.status(404).build();
     }
+
+//    @PostMapping("/login")
+//    public TokenDTO login(@RequestBody MemberLoginRequestDTO memberLoginRequestDto) {
+//        String memberId = memberLoginRequestDto.getLoginId();
+//        String password = memberLoginRequestDto.getPassword();
+//        TokenDTO tokenInfo = memberService.login(memberId, password);
+//        return tokenInfo;
+//    }
 }
 
